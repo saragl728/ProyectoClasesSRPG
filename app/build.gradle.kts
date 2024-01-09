@@ -7,6 +7,10 @@ android {
     namespace = "com.example.proyectoclasessrpg"
     compileSdk = 34
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.proyectoclasessrpg"
         minSdk = 24
