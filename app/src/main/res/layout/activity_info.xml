@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InfoActivity">
+
+    <TextView
+        android:id="@+id/textoA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esta aplicación sirve para gestionar la lógica de las clases de RPGs."
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <TextView
+        android:id="@+id/textoB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puedes registrar las clases de los personajes, sus habilidades, propiedades y las armas que pueden usar."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textoA"/>
+
+    <TextView
+        android:id="@+id/textoC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puedes conectar las clases de los personajes con las armas, propiedades y habilidades."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textoB" />
+    <TextView
+        android:id="@+id/textoD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Si intentas borrar un arma, clase, habilidad o propiedad, se intentarán borrar todos los registros relacionados, es decir, los registros de las tablas que los conectan."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textoC" />
+    <TextView
+        android:id="@+id/textoE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Las clases pueden compartir nombres visibles, pero van a tener su propio nombre interno."
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textoD" />
+</androidx.constraintlayout.widget.ConstraintLayout>
