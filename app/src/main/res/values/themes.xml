@@ -8,4 +8,9 @@
     </style>
 
     <style name="Theme.ProyectoClasesSRPG" parent="Base.Theme.ProyectoClasesSRPG" />
+    <style name="SplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/colorFondo</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logosrpg</item>
+        <item name="postSplashScreenTheme">@style/Theme.ProyectoClasesSRPG</item>
+    </style>
 </resources>
