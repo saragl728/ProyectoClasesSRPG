@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "145870618912",
+    "project_id": "proyectosrpg-54bc3",
+    "storage_bucket": "proyectosrpg-54bc3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145870618912:android:ac5191911ad459a5aa5745",
+        "android_client_info": {
+          "package_name": "com.example.proyectoclassessrpg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLT2srBkK6NNoQrF0ij8G6LGYQ4VistmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
