@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/listaClases"
+        android:title="Lista clases" />
+    <item android:id="@+id/anyadirClases"
+        android:title="Añadir clase" />
+    <item android:id="@+id/promociones"
+        android:title="Promociones"/>
+    <item android:id="@+id/listaHabilidades"
+        android:title="Lista de habilidades" />
+    <item android:id="anyadirHabilidad"
+        android:title="Añadir habilidad"/>
+    <item android:id="@+id/listaTiposArmas"
+        android:title="Lista tipos de armas"/>
+    <item android:id="@+id/anyadirTipoArma"
+        android:title="Añadir tipo de arma"/>
+    <item android:id="@+id/listaPropiedades"
+        android:title="Lista de propiedades"/>
+    <item android:id="@+id/anyadirPropiedad"
+        android:title="Añadir propiedad"/>
+    <item android:id="@+id/adios"
+        android:title="Cierre de sesión"
+        app:showAsAction="always"
+        android:icon="@drawable/cierre_sesion"/>
+    <item android:id="@+id/info"
+        android:title="Información de la aplicación"
+        app:showAsAction="always"
+        android:icon="@drawable/info"/>
+</menu>
