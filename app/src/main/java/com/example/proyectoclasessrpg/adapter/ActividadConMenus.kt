@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.proyectoclasessrpg.InfoActivity
 import com.example.proyectoclasessrpg.R
 
-class ActividadConMenus : AppCompatActivity() {
+open class ActividadConMenus : AppCompatActivity() {
     companion object {
         var actividadActual = 0;
     }

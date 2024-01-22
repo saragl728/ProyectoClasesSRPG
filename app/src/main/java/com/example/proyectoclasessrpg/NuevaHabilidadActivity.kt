@@ -3,9 +3,10 @@ package com.example.proyectoclasessrpg
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.databinding.ActivityNuevaHabilidadBinding
 
-class NuevaHabilidadActivity : AppCompatActivity() {
+class NuevaHabilidadActivity : ActividadConMenus() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityNuevaHabilidadBinding.inflate(layoutInflater)
