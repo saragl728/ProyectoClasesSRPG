@@ -10,7 +10,7 @@
         android:title="Promociones"/>
     <item android:id="@+id/listaHabilidades"
         android:title="Lista de habilidades" />
-    <item android:id="anyadirHabilidad"
+    <item android:id="@+id/anyadirHabilidad"
         android:title="Añadir habilidad"/>
     <item android:id="@+id/listaTiposArmas"
         android:title="Lista tipos de armas"/>
