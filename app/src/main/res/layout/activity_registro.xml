@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistroActivity"
-    android:layout_marginVertical="10dp"
-    android:layout_marginHorizontal="20dp">
+    android:layout_marginVertical="10dp">
 
     <ImageView
         android:id="@+id/imagenRegistro"
@@ -22,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
+        android:layout_marginLeft="20dp"
         app:layout_constraintTop_toBottomOf="@id/imagenRegistro"
         app:layout_constraintLeft_toLeftOf="parent" />
 
@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="email"
+        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoEmail"/>
 
@@ -39,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contrasena"
+        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/email"/>
 
@@ -49,6 +51,7 @@
         android:textSize="20dp"
         android:inputType="textPassword"
         android:hint="contraseña"
+        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoContrasenya"/>
 
@@ -58,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre de usuario"
+        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contrasenya" />
 
@@ -67,6 +71,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="Nombre de usuario"
+        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoNombreUsuario"/>
 
