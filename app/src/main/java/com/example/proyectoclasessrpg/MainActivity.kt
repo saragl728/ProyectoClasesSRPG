@@ -13,6 +13,8 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        title = "Inicio"
+
         //iniciar sesión
         binding.bLogin.setOnClickListener {
             //se comprueba si hay campos vacíos
