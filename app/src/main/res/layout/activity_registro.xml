@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistroActivity">
+    tools:context=".RegistroActivity"
+    android:layout_marginVertical="10dp"
+    android:layout_marginHorizontal="20dp">
 
     <ImageView
         android:id="@+id/imagenRegistro"
@@ -17,7 +19,6 @@
 
     <TextView
         android:id="@+id/textoEmail"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
@@ -26,7 +27,6 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
@@ -35,7 +35,6 @@
         app:layout_constraintTop_toBottomOf="@id/textoEmail"/>
 
     <TextView
-        android:layout_marginLeft="20dp"
         android:id="@+id/textoContrasenya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +43,6 @@
         app:layout_constraintTop_toBottomOf="@id/email"/>
 
     <EditText
-        android:layout_marginLeft="20dp"
         android:id="@+id/contrasenya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,37 +52,16 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoContrasenya"/>
 
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:id="@+id/textoNombreCompleto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre completo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contrasenya"/>
-
-    <EditText
-        android:layout_marginLeft="20dp"
-        android:id="@+id/nombreCompleto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:hint="Nombre completo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoNombreCompleto"/>
-
 
     <TextView
-        android:layout_marginLeft="20dp"
         android:id="@+id/textoNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre de usuario"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombreCompleto"/>
+        app:layout_constraintTop_toBottomOf="@id/contrasenya" />
 
     <EditText
-        android:layout_marginLeft="20dp"
         android:id="@+id/nombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
