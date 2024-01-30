@@ -21,8 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
+        android:textStyle="bold"
+        android:textSize="21dp"
         android:layout_marginLeft="20dp"
-        app:layout_constraintTop_toBottomOf="@id/imagenRegistro"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@id/divisor"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
@@ -30,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_marginVertical="10dp"
         android:hint="email"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,30 +44,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contrasena"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:layout_marginVertical="10dp"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email"/>
+        app:layout_constraintTop_toBottomOf="@id/nombreUsuario"/>
 
     <EditText
         android:id="@+id/contrasenya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:layout_marginVertical="10dp"
         android:inputType="textPassword"
         android:hint="contraseña"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoContrasenya"/>
 
-
     <TextView
         android:id="@+id/textoNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nombre de usuario"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:layout_marginVertical="10dp"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contrasenya" />
+        app:layout_constraintTop_toBottomOf="@id/email" />
 
     <EditText
         android:id="@+id/nombreUsuario"
@@ -71,6 +81,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:hint="Nombre de usuario"
+        android:layout_marginVertical="10dp"
         android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoNombreUsuario"/>
@@ -84,4 +95,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nombreUsuario"/>
+
+    <View
+        android:id="@+id/divisor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@id/imagenRegistro"
+        app:layout_constraintBottom_toTopOf="@id/textoEmail"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

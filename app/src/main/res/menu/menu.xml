@@ -20,12 +20,12 @@
         android:title="Lista de propiedades"/>
     <item android:id="@+id/anyadirPropiedad"
         android:title="Añadir propiedad"/>
-    <item android:id="@+id/adios"
-        android:title="Cierre de sesión"
-        app:showAsAction="always"
-        android:icon="@drawable/cierre_sesion"/>
     <item android:id="@+id/info"
         android:title="Información de la aplicación"
         app:showAsAction="always"
         android:icon="@drawable/info"/>
+    <item android:id="@+id/adios"
+        android:title="Cierre de sesión"
+        app:showAsAction="always"
+        android:icon="@drawable/cierre_sesion"/>
 </menu>

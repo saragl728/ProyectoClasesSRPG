@@ -4,9 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:layout_marginVertical="10dp">
+    tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textoCorreo"
+        android:text="Correo electrónico"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/correo"
+        app:layout_constraintTop_toBottomOf="@id/divisor"/>
     <EditText
         android:id="@+id/correo"
         android:layout_width="wrap_content"
@@ -15,7 +25,19 @@
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imagenInicio"
+        app:layout_constraintTop_toBottomOf="@id/textoCorreo"
+        app:layout_constraintBottom_toTopOf="@id/contrasenya"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textoContrasenya"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Contraseña"
+        app:layout_constraintTop_toBottomOf="@id/correo"
         app:layout_constraintBottom_toTopOf="@id/contrasenya"/>
 
     <EditText
@@ -27,8 +49,8 @@
         android:inputType="textPassword"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bLogin"
-        app:layout_constraintTop_toBottomOf="@id/correo"/>
+        app:layout_constraintBottom_toTopOf="@id/divisor2"
+        app:layout_constraintTop_toBottomOf="@id/textoContrasenya"/>
 
     <Button
         android:id="@+id/bLogin"
@@ -38,7 +60,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/bRegistro"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contrasenya"/>
+        app:layout_constraintTop_toBottomOf="@id/divisor2"/>
 
     <Button
         android:id="@+id/bRegistro"
@@ -48,7 +70,7 @@
         app:layout_constraintLeft_toRightOf="@id/bLogin"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contrasenya"/>
+        app:layout_constraintTop_toBottomOf="@id/divisor2"/>
 
     <ImageView
         android:id="@+id/imagenInicio"
@@ -58,4 +80,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <View
+        android:id="@+id/divisor"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@id/imagenInicio"
+        app:layout_constraintBottom_toTopOf="@id/textoCorreo"/>
+
+    <View
+        android:id="@+id/divisor2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@id/bLogin"
+        app:layout_constraintTop_toBottomOf="@id/contrasenya"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

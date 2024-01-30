@@ -10,6 +10,7 @@ class ListadoClasesActivity : ActividadConMenus() {
         super.onCreate(savedInstanceState)
         val binding = ActivityListadoClasesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        title = "Lista de clases"
 
     }
 }
