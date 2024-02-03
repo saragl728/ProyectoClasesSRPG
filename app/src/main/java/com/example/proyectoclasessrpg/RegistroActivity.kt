@@ -3,6 +3,7 @@ package com.example.proyectoclasessrpg
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.proyectoclasessrpg.databinding.ActivityRegistroBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -14,6 +15,7 @@ class RegistroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         title = "Nuevo usuario"
+
 
         binding.botonRegistro.setOnClickListener {
             //se comprueba si hay algo en blanco

@@ -43,7 +43,7 @@
         android:id="@+id/textoContrasenya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contrasena"
+        android:text="Contraseña"
         android:textStyle="bold"
         android:textSize="21dp"
         android:layout_marginVertical="10dp"
@@ -94,7 +94,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombreUsuario"/>
+        app:layout_constraintTop_toBottomOf="@id/contrasenya"/>
 
     <View
         android:id="@+id/divisor"
@@ -103,5 +103,16 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintTop_toBottomOf="@id/imagenRegistro"
         app:layout_constraintBottom_toTopOf="@id/textoEmail"/>
+
+    <TextView
+        android:id="@+id/textoAviso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#D00000"
+        android:text="Introduce una contraseña que puedas recordar fácilmente"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contrasenya"
+        app:layout_constraintBottom_toTopOf="@id/botonRegistro"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

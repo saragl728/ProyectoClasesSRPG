@@ -2,14 +2,14 @@ package com.example.proyectoclasessrpg
 
 import android.os.Bundle
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
-import com.example.proyectoclasessrpg.databinding.ActivityListadoClasesBinding
+import com.example.proyectoclasessrpg.databinding.ActivityNuevaPromocionBinding
 
-class ListadoClasesActivity : ActividadConMenus() {
+class NuevaPromocionActivity : ActividadConMenus() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityListadoClasesBinding.inflate(layoutInflater)
+        val binding = ActivityNuevaPromocionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        title = "Lista de clases"
 
+        title = "Añadir una promoción de clase"
     }
 }

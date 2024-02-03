@@ -13,6 +13,12 @@
         android:theme="@style/Theme.ProyectoClasesSRPG"
         tools:targetApi="31">
         <activity
+            android:name=".ListadoPromocionesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NuevaPromocionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListadoArmasActivity"
             android:exported="false" />
         <activity
@@ -29,9 +35,6 @@
             android:exported="false" />
         <activity
             android:name=".NuevaHabilidadActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InfoActivity"
             android:exported="false" />
         <activity
             android:name=".ListadoClasesActivity"

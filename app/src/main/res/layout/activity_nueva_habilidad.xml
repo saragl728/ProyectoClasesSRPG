@@ -17,18 +17,6 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Añade una habilidad"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@id/textoNombre"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textoNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +26,7 @@
         android:textSize="21dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divisor" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textoDescripcion"
@@ -74,11 +62,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textoDescripcion" />
 
-    <View
-        android:id="@+id/divisor"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@id/titulo"
-        app:layout_constraintBottom_toTopOf="@id/textoNombre"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

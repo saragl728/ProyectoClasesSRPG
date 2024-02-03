@@ -8,6 +8,8 @@
         android:title="Añadir clase" />
     <item android:id="@+id/promociones"
         android:title="Promociones"/>
+    <item android:id="@+id/anyadirPromociones"
+        android:title="Añadir promoción"/>
     <item android:id="@+id/listaHabilidades"
         android:title="Lista de habilidades" />
     <item android:id="@+id/anyadirHabilidad"
@@ -20,10 +22,6 @@
         android:title="Lista de propiedades"/>
     <item android:id="@+id/anyadirPropiedad"
         android:title="Añadir propiedad"/>
-    <item android:id="@+id/info"
-        android:title="Información de la aplicación"
-        app:showAsAction="always"
-        android:icon="@drawable/info"/>
     <item android:id="@+id/adios"
         android:title="Cierre de sesión"
         app:showAsAction="always"

@@ -1,6 +1,5 @@
 package com.example.proyectoclasessrpg
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
@@ -11,6 +10,7 @@ class NuevaHabilidadActivity : ActividadConMenus() {
         super.onCreate(savedInstanceState)
         val binding = ActivityNuevaHabilidadBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        title = "Añadir habilidad"
 
         //si se intenta añadir una habilidad
         binding.bAnyadirHabilidad.setOnClickListener {
