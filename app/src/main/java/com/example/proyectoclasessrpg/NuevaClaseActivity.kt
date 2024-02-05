@@ -9,6 +9,7 @@ class NuevaClaseActivity : ActividadConMenus() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityNuevaClaseBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         title = "Añadir clase"
 
         //cuando se intenta añadir una clase
@@ -33,7 +34,7 @@ class NuevaClaseActivity : ActividadConMenus() {
             }
             //si hay un campo vacío se avisa
             else {
-                Toast.makeText(this, "Hay un campo vacío", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Hay al menos un campo vacío", Toast.LENGTH_LONG).show()
             }
         }
     }
