@@ -5,6 +5,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
+import com.example.proyectoclasessrpg.ConectarClasesOtrosActivity
 import com.example.proyectoclasessrpg.ListadoArmasActivity
 import com.example.proyectoclasessrpg.ListadoClasesActivity
 import com.example.proyectoclasessrpg.ListadoHabilidadesActivity
@@ -113,6 +114,14 @@ open class ActividadConMenus : AppCompatActivity() {
                 intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
                 startActivity(intent)
                 actividadActual = 9
+                true
+            }
+
+            R.id.clasesOtros -> {
+                val intent = Intent(this,ConectarClasesOtrosActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+                startActivity(intent)
+                actividadActual = 10
                 true
             }
 

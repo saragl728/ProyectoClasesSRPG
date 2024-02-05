@@ -22,6 +22,8 @@
         android:title="Lista de propiedades"/>
     <item android:id="@+id/anyadirPropiedad"
         android:title="Añadir propiedad"/>
+    <item android:id="@+id/clasesOtros"
+        android:title="Clases con otros"/>
     <item android:id="@+id/adios"
         android:title="Cierre de sesión"
         app:showAsAction="always"

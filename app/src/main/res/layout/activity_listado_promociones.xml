@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="Promociones de esta clase"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/bPromoA"
+app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/filtro"/>
 
     <Button
@@ -34,8 +34,8 @@
         android:layout_height="wrap_content"
         android:text="Clases que promocionan a esta"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/bPromoDe"
-        app:layout_constraintTop_toBottomOf="@id/filtro"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bPromoDe"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -43,5 +43,5 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bPromoDe"/>
+        app:layout_constraintTop_toBottomOf="@id/bPromoA"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
