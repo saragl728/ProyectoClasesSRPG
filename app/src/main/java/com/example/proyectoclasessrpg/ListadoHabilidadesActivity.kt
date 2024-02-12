@@ -1,6 +1,7 @@
 package com.example.proyectoclasessrpg
 
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.databinding.ActivityListadoHabilidadesBinding
 
@@ -11,5 +12,6 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
         setContentView(binding.root)
 
         title = "Lista de habilidades"
+        binding.recycler.layoutManager = LinearLayoutManager(this)
     }
 }

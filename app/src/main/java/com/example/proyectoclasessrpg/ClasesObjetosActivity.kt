@@ -2,6 +2,7 @@ package com.example.proyectoclasessrpg
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.databinding.ActivityClasesObjetosBinding
 
@@ -10,6 +11,8 @@ class ClasesObjetosActivity : ActividadConMenus() {
         super.onCreate(savedInstanceState)
         val binding = ActivityClasesObjetosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.recycler.layoutManager = LinearLayoutManager(this)
 
         //botón para buscar clases según el tipo de objeto con las que están relacionadas
         binding.boton.setOnClickListener {

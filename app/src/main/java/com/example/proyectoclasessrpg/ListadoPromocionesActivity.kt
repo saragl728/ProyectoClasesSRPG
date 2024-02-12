@@ -2,6 +2,7 @@ package com.example.proyectoclasessrpg
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.databinding.ActivityListadoPromocionesBinding
 
@@ -11,6 +12,8 @@ class ListadoPromocionesActivity : ActividadConMenus() {
         val binding = ActivityListadoPromocionesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "Lista de promociones"
+
+        binding.recycler.layoutManager = LinearLayoutManager(this)
 
         //para buscar clases que promocionan a la que se busca
         binding.bPromoA.setOnClickListener {
