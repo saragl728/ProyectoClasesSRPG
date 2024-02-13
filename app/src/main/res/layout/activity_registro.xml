@@ -117,5 +117,38 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/contrasenya"
         app:layout_constraintBottom_toTopOf="@id/botonRegistro"/>
+    <TextView
+        android:id="@+id/textoAviso2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#D00000"
+        android:text="Elige una imagen de usuario pequeña"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textoAviso"
+        app:layout_constraintBottom_toTopOf="@id/botonRegistro"/>
+
+    <TextView
+        android:id="@+id/textoImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Imagen de usuario"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintTop_toBottomOf="@id/divisor"/>
+
+    <ImageButton
+        android:id="@+id/botonImagen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textoImagen"
+        android:layout_marginRight="20dp"
+        android:layout_marginVertical="10dp"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:src="@drawable/avatarprovisional" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
