@@ -3,6 +3,7 @@ package com.example.proyectoclasessrpg
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
+import com.example.proyectoclasessrpg.adapter.ClaseAdapter
 import com.example.proyectoclasessrpg.databinding.ActivityListadoClasesBinding
 
 class ListadoClasesActivity : ActividadConMenus() {
@@ -13,5 +14,9 @@ class ListadoClasesActivity : ActividadConMenus() {
         title = "Lista de clases"
 
         binding.recycler.layoutManager = LinearLayoutManager(this)
+        var adapter = ClaseAdapter(ClaseProvider.listaClases)
+        binding.recycler.adapter = adapter
     }
+
+
 }
