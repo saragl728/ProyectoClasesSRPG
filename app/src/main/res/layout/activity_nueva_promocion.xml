@@ -7,55 +7,54 @@
     tools:context=".NuevaPromocionActivity"
     android:layout_marginVertical="10dp">
 
-    <TextView
-        android:id="@+id/textoClaseBase"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Clase base"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/nomClaseBase"
+        android:layout_margin="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/textoClasePromocionada" />
-
-    <TextView
-        android:id="@+id/textoClasePromocionada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        android:text="Clase promocionada"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/textoClaseBase"/>
+        app:layout_constraintBottom_toTopOf="@id/nomClasePromo"
+        android:layout_marginHorizontal="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Clase base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/claseBase"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textoClaseBase"
-        android:hint="Clase base"
-        android:textSize="20dp"
+        android:id="@+id/nomClasePromo"
+        android:layout_margin="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/clasePromocionada"/>
-
-    <EditText
-        android:id="@+id/clasePromocionada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/textoClasePromocionada"
-        android:textSize="20dp"
-        android:hint="Clase promocionada"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/claseBase"/>
+        app:layout_constraintTop_toBottomOf="@id/nomClaseBase"
+        app:layout_constraintBottom_toTopOf="@id/bAnyadirPromocion"
+        android:layout_marginHorizontal="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Clase promocionada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/bAnyadirPromocion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Añadir promoción"
-        app:layout_constraintTop_toBottomOf="@id/claseBase"
+        app:layout_constraintTop_toBottomOf="@id/nomClasePromo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/bVolver"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bVolver"
+        android:text="Volver"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bAnyadirPromocion"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,39 +1,42 @@
 package com.example.proyectoclasessrpg
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.proyectoclasessrpg.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ActividadesUsuarios() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         title = "Inicio"
 
         //iniciar sesión
         binding.bLogin.setOnClickListener {
-            //se comprueba si hay campos vacíos
-            if (binding.correo.text.toString().isNotEmpty() && binding.contrasenya.text.toString().isNotEmpty()){
-                //si no hay campos vacíos, debería intentar iniciar sesión
-                FirebaseAuth.getInstance().signInWithEmailAndPassword(binding.correo.text.toString(), binding.contrasenya.text.toString()).addOnCompleteListener {
-                    //si funciona, irá a la actividad con el listado de clases
+            try {
+                val usuario = Estatico.FormatBase(binding.email.editText?.text.toString(), "El correo no puede estar en blanco")
+                val contrase = Estatico.FormatBase(binding.passwd.editText?.text.toString(), "La contraseña no puede estar en blanco")
+
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(usuario, contrase).addOnCompleteListener {
                     if (it.isSuccessful){
-                        val intent = Intent(this, ListadoClasesActivity::class.java)
-                        startActivity(intent)
+                        //te lleva a otra actividad y suena el sonido de inicio
+//                        sonidoInicio.start()
+//                        val intent = Intent(this, ListadoClasesActivity::class.java)
+//                        startActivity(intent)
+                        InicioSesion()
                     }
                     else{
-                        Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show()
+                        Estatico.MensajeConSonido("Usuario o contraseña incorrectos", sonidoError, this)
                     }
                 }
+
             }
-            else{
-                //avisa si no hay un campo vacío
-                Toast.makeText(this, "Hay un campo vacío", Toast.LENGTH_LONG).show()
+            catch (e: Exception){
+                Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
         }
 
@@ -42,5 +45,11 @@ class MainActivity : AppCompatActivity() {
             //se llama a la actividad de registro
             startActivity(Intent(this, RegistroActivity::class.java))
         }
+
+        //contraseña olvidada
+        binding.bConOlvid.setOnClickListener {
+            startActivity(Intent(this, ContOlvidadaActivity::class.java))
+        }
+
     }
 }

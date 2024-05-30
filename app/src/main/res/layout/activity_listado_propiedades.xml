@@ -6,15 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ListadoPropiedadesActivity">
 
-    <EditText
-        android:id="@+id/filtroPropiedad"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nomProp"
+        android:layout_margin="5dp"
+        app:startIconDrawable="@drawable/lupa"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Buscar propiedad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Buscar propiedad"
-        android:drawableLeft="@drawable/lupa"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="Buscar"
+        android:id="@+id/bBuscar"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recycler"
+        app:layout_constraintTop_toBottomOf="@id/nomProp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -22,5 +38,13 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filtroPropiedad"/>
+        app:layout_constraintTop_toBottomOf="@id/bBuscar"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bMas"
+        android:src="@drawable/sumar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

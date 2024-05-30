@@ -6,25 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".NuevaArmaActivity">
 
-    <TextView
-        android:id="@+id/textoInicio"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Añade un tipo de arma"
-        android:textSize="30dp"
+        android:id="@+id/nomArma"
+        android:layout_margin="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <EditText
-        android:id="@+id/nuevaArma"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Añade un tipo de arma"
-        android:textSize="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoInicio"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bVolver"
+        android:layout_marginHorizontal="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Tipo de arma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <Button
         android:id="@+id/bAnyadirArma"
@@ -34,5 +31,14 @@
         android:text="Añadir tipo de arma"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toLeftOf="@id/bVolver" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/bVolver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/bAnyadirArma"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="Volver"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

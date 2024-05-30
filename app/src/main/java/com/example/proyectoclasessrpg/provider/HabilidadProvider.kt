@@ -1,9 +1,9 @@
-package com.example.proyectoclasessrpg
+package com.example.proyectoclasessrpg.provider
 
 import com.example.proyectoclasessrpg.database.Habilidad
 
 class HabilidadProvider {
     companion object{
-        val listaHabilidades = listOf<Habilidad>(Habilidad())
+        var listaHabilidades = listOf(Habilidad())
     }
 }

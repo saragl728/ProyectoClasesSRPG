@@ -30,4 +30,8 @@
         android:title="Cierre de sesión"
         app:showAsAction="always"
         android:icon="@drawable/cierre_sesion"/>
+    <item android:id="@+id/info"
+        android:title="Información"
+        android:icon="@drawable/info"
+        app:showAsAction="always"/>
 </menu>

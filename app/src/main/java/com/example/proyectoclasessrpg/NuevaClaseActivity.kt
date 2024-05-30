@@ -1,7 +1,8 @@
 package com.example.proyectoclasessrpg
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.database.Clase
 import com.example.proyectoclasessrpg.databinding.ActivityNuevaClaseBinding
@@ -12,42 +13,52 @@ import kotlinx.coroutines.launch
 class NuevaClaseActivity : ActividadConMenus() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityNuevaClaseBinding.inflate(layoutInflater)
+        var binding = ActivityNuevaClaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "Añadir clase"
 
+
         //cuando se intenta añadir una clase
         binding.bAnyadirClase.setOnClickListener {
-            //variable que se va a necesitar para una validación
-            var movimiento = binding.movimiento.text.toString().toInt()
-            //se comprueba si se han rellenado los campos
-            if (binding.nombreInterno.text.toString()
-                    .isNotEmpty() && binding.nombreVisible.text.toString()
-                    .isNotEmpty() && binding.movimiento.text.toString().isNotEmpty() && (binding.descripcion.text.toString().isNotEmpty())
-            ) {
-                //antes de intentar añadirlo, comprueba que el movimiento no es inferior a 0
-                if (movimiento < 0) {
-                    Toast.makeText(
-                        this,
-                        "El movimiento de la clase no puede ser inferior a 0",
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    //intentará añadir la clase nueva a la base de datos
-                    val clase = Clase(binding.nombreInterno.text.toString(), binding.nombreVisible.text.toString(),
-                        binding.descripcion.text.toString(), (binding.movimiento.text.toString().toInt()))
+            try {
+                //variables que se va a necesitar para una validación
+                var movimiento = binding.nMovimiento.editText?.text.toString().toInt()
+                var nomInterno = Estatico.FormatMayus(binding.nomInterno.editText?.text.toString(), "El nombre interno no puede estar en blanco")
+                var nomVisible = Estatico.FormatSimple(binding.nomVisible.editText?.text.toString(), "El nombre visible no puede estar en blanco")
+                var descrip = Estatico.FormatSimple(binding.tDescripcion.editText?.text.toString(), "La descripción no puede estar en blanco")
+                if (movimiento < 0) throw Exception("El movimiento de la clase no puede ser inferior a 0")
+                //intentará añadir la clase nueva a la base de datos
+                val clase = Clase(nomInterno, nomVisible, descrip, movimiento)
 
-                    CoroutineScope(Dispatchers.IO).launch {
-                        //val id = ProyectoSRPG.database.
-                    }
-
-
+                CoroutineScope(Dispatchers.IO).launch {
+                    //val id = ProyectoSrpg.database.listaCla().addClase(clase)
+                    val id = auxDao.addClase(clase)
                 }
+                runOnUiThread { true }
+
             }
-            //si hay un campo vacío se avisa
-            else {
-                Toast.makeText(this, "Hay al menos un campo vacío", Toast.LENGTH_LONG).show()
+            catch (e: Exception){
+                Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
+
+        }
+
+        binding.bVolver.setOnClickListener {
+            var aviso = AlertDialog.Builder(this)
+
+            aviso.setTitle("Aviso")
+            aviso.setIcon(R.drawable.pregunta)
+            aviso.setMessage("¿Seguro que quieres dejar de añadir objetos?")
+                .setPositiveButton(android.R.string.ok, { dialog, which ->
+                    actividadActual = 0
+                    startActivity(Intent(this, ListadoClasesActivity::class.java))
+
+                })
+                //no se hará nada en la opción de cancelar
+                .setNegativeButton(android.R.string.cancel, { dialog, which ->})
+
+            //mostrará el cuadro de diálogo
+            aviso.show()
         }
     }
 }

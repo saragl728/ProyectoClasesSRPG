@@ -15,79 +15,43 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
-    <TextView
-        android:id="@+id/textoEmail"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginVertical="10dp"
+        android:id="@+id/correo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divisor"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/passwd"
+        app:startIconDrawable="@drawable/email"
+        android:layout_marginHorizontal="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginVertical="10dp"
-        android:hint="email"
-        android:inputType="textEmailAddress"
-        android:drawableLeft="@drawable/email"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoEmail"/>
 
-    <TextView
-        android:id="@+id/textoContrasenya"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Contraseña"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginLeft="20dp"
+        android:id="@+id/passwd"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombreUsuario"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/correo"
+        app:layout_constraintBottom_toTopOf="@id/textoAviso"
+        app:startIconDrawable="@drawable/contrasenya"
+        app:passwordToggleEnabled="true"
+        app:helperText="La contraseña debe tener al menos 3 caracteres, cifras y letras"
+        android:layout_marginHorizontal="5dp">
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/contrasenya"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:layout_marginVertical="10dp"
-        android:inputType="textPassword"
-        android:drawableLeft="@drawable/contrasenya"
-        android:hint="contraseña"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoContrasenya"/>
-
-    <TextView
-        android:id="@+id/textoNombreUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre de usuario"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email" />
-
-    <EditText
-        android:id="@+id/nombreUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:drawableLeft="@drawable/persona"
-        android:hint="Nombre de usuario"
-        android:layout_marginVertical="10dp"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoNombreUsuario"/>
 
     <Button
         android:id="@+id/botonRegistro"
@@ -97,7 +61,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contrasenya"/>
+        app:layout_constraintTop_toBottomOf="@id/textoAviso"/>
 
     <View
         android:id="@+id/divisor"
@@ -105,50 +69,19 @@
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintTop_toBottomOf="@id/imagenRegistro"
-        app:layout_constraintBottom_toTopOf="@id/textoEmail"/>
+        app:layout_constraintBottom_toTopOf="@id/correo"/>
 
     <TextView
         android:id="@+id/textoAviso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#D00000"
+        android:textAlignment="center"
         android:text="Introduce una contraseña que puedas recordar fácilmente"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/contrasenya"
-        app:layout_constraintBottom_toTopOf="@id/botonRegistro"/>
-    <TextView
-        android:id="@+id/textoAviso2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#D00000"
-        android:text="Elige una imagen de usuario pequeña"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoAviso"
+        app:layout_constraintTop_toBottomOf="@id/passwd"
         app:layout_constraintBottom_toTopOf="@id/botonRegistro"/>
 
-    <TextView
-        android:id="@+id/textoImagen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Imagen de usuario"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginVertical="10dp"
-        app:layout_constraintTop_toBottomOf="@id/divisor"/>
-
-    <ImageButton
-        android:id="@+id/botonImagen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textoImagen"
-        android:layout_marginRight="20dp"
-        android:layout_marginVertical="10dp"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:src="@drawable/avatarprovisional" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

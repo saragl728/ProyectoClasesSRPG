@@ -5,6 +5,9 @@
         <item name="colorPrimary">#BC5C08</item>
         <item name="colorPrimaryDark">#A85308</item>
         <item name="colorAccent">#FFC107</item>
+        <item name="fontFamily">@font/opendyslexic</item>
+        <item name="android:windowBackground">#FFFEED</item>
+        <item name="android:textColorPrimary">#111111</item>
     </style>
 
     <style name="Theme.ProyectoClasesSRPG" parent="Base.Theme.ProyectoClasesSRPG" />

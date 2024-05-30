@@ -1,10 +1,10 @@
-package com.example.proyectoclasessrpg
+package com.example.proyectoclasessrpg.provider
 
 import com.example.proyectoclasessrpg.database.Clase
 
 class ClaseProvider {
     companion object{
-        val listaClases = listOf<Clase>(Clase())
+        var listaClases = listOf(Clase())
     }
 
 }
