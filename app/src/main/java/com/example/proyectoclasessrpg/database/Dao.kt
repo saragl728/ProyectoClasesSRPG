@@ -16,7 +16,7 @@ interface Dao {
     @Query("SELECT * FROM clase")
     suspend fun getAllClases(): MutableList<Clase>
 
-    @Query("SELECT * FROM clase WHERE nombreInterno LIKE :clase")
+    @Query("SELECT * FROM clase WHERE nombreInterno LIKE '%' || :clase || '%'")
     suspend fun getClasesPorNombre(clase: String): MutableList<Clase>
 
     @Upsert(entity = Clase::class)
@@ -32,7 +32,7 @@ interface Dao {
 
         //procedo al borrado
         for (i in 0 until promosA.size){
-                    ProyectoSrpg.database.listaCla().deletePromocion(promosA[i])
+            ProyectoSrpg.database.listaCla().deletePromocion(promosA[i])
         }
         for (i in 0 until promosB.size){
             ProyectoSrpg.database.listaCla().deletePromocion(promosB[i])
@@ -59,7 +59,7 @@ interface Dao {
     @Query("SELECT * FROM habilidad")
     suspend fun getAllHabilidades(): MutableList<Habilidad>
 
-    @Query("SELECT * FROM habilidad WHERE nombreHabilidad LIKE :habilidad")
+    @Query("SELECT * FROM habilidad WHERE nombreHabilidad LIKE '%' || :habilidad || '%'")
     suspend fun getHabilidadPorNombre(habilidad: String): MutableList<Habilidad>
 
     @Upsert(entity = Habilidad::class)
@@ -82,7 +82,7 @@ interface Dao {
     @Query("SELECT * FROM propiedad")
     suspend fun getAllPropiedades(): MutableList<Propiedad>
 
-    @Query("SELECT * FROM propiedad WHERE nombrePropiedad LIKE :propiedad")
+    @Query("SELECT * FROM propiedad WHERE nombrePropiedad LIKE '%' || :propiedad || '%'")
     suspend fun getPropiedadPorNombre(propiedad: String): MutableList<Propiedad>
 
     @Insert(entity = Propiedad::class, onConflict = OnConflictStrategy.REPLACE)
@@ -104,7 +104,7 @@ interface Dao {
     @Query("SELECT * FROM arma")
     suspend fun getAllArmas(): MutableList<Arma>
 
-    @Query("SELECT * FROM arma WHERE NombreArma LIKE :nom")
+    @Query("SELECT * FROM arma WHERE NombreArma LIKE '%' || :nom || '%'")
     suspend fun getArmasConNombre(nom: String): MutableList<Arma>
 
     @Insert(entity = Arma::class, onConflict = OnConflictStrategy.REPLACE)
