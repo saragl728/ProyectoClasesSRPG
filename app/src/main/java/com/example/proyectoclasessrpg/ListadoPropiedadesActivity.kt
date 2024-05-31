@@ -20,10 +20,19 @@ class ListadoPropiedadesActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de propiedades"
 
-        binding.recycler.layoutManager = LinearLayoutManager(this)
-         var adapter = PropiedadAdapter(PropiedadProvider.listaPropiedad)
-        binding.recycler.adapter = adapter
-                
+//        binding.recycler.layoutManager = LinearLayoutManager(this)
+//
+//        binding.recycler.adapter = adapter
+
+        binding.recycler.apply {
+            layoutManager = LinearLayoutManager(this@ListadoPropiedadesActivity)
+            CoroutineScope(Dispatchers.IO).launch {
+                adapter = PropiedadAdapter(auxDao.getAllPropiedades())
+            }
+            runOnUiThread { true }
+        }
+
+        var adapter = PropiedadAdapter(PropiedadProvider.listaPropiedad)
 
         binding.bBuscar.setOnClickListener {
             try {

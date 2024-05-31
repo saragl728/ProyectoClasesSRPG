@@ -21,11 +21,6 @@ class ClaseArmaAdapter(private val claseArmaList: List<ClaseArma>): RecyclerView
     override fun onBindViewHolder(holder: ClaseArmaViewHolder, position: Int) {
         val item = claseArmaList[position]
         holder.render(item)
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                ProyectoSrpg.database.listaCla().deleteClaseConArma(item)
-            }
-            true
-        }
+
     }
 }

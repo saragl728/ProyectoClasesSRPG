@@ -22,12 +22,6 @@ class HabilidadAdapter(private val habilidadList:List<Habilidad>): RecyclerView.
         val item = habilidadList[position]
         holder.render(item)
 
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                ProyectoSrpg.database.listaCla().deleteHabilidad(item)
-            }
-            true
-        }
     }
 
 }

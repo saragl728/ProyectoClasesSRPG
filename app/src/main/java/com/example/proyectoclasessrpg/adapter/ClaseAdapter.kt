@@ -20,12 +20,6 @@ class ClaseAdapter(private val claseList:List<Clase>): RecyclerView.Adapter<Clas
         val item = claseList[position]
         holder.render(item)
 
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                ProyectoSrpg.database.listaCla().deleteClase(item)
-            }
-            true
-        }
     }
 
     override fun getItemCount(): Int = claseList.size

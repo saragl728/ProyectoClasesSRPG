@@ -22,11 +22,5 @@ class ClaseHabilidadAdapter(private val claseHabilidadList: List<ClaseHabilidad>
         val item = claseHabilidadList[position]
         holder.render(item)
 
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                ProyectoSrpg.database.listaCla().deleteClaseConHabilidad(item)
-            }
-            true
-        }
     }
 }

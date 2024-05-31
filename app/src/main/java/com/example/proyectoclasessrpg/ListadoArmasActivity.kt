@@ -19,9 +19,19 @@ class ListadoArmasActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de tipos de armas"
 
-        binding.recycler.layoutManager = LinearLayoutManager(this)
+//        binding.recycler.layoutManager = LinearLayoutManager(this)
+//        var adapter = ArmaAdapter(ArmaProvider.listaArma)
+//        binding.recycler.adapter = adapter
+
+        binding.recycler.apply {
+            layoutManager = LinearLayoutManager(this@ListadoArmasActivity)
+            CoroutineScope(Dispatchers.IO).launch {
+                adapter = ArmaAdapter(auxDao.getAllArmas())
+            }
+            runOnUiThread { true }
+        }
+
         var adapter = ArmaAdapter(ArmaProvider.listaArma)
-        binding.recycler.adapter = adapter
 
         binding.bBuscar.setOnClickListener {
             try {

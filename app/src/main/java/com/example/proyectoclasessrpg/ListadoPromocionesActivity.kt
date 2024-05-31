@@ -22,9 +22,19 @@ class ListadoPromocionesActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de promociones"
 
-        binding.recycler.layoutManager = LinearLayoutManager(this)
+//        binding.recycler.layoutManager = LinearLayoutManager(this)
+//
+//        binding.recycler.adapter = adapter
+
+        binding.recycler.apply {
+            layoutManager = LinearLayoutManager(this@ListadoPromocionesActivity)
+            CoroutineScope(Dispatchers.IO).launch {
+                adapter = PromocionAdapter(auxDao.getAllPromociones())
+            }
+            runOnUiThread { true }
+        }
+
         var adapter = PromocionAdapter(PromocionProvider.listaPromociones)
-        binding.recycler.adapter = adapter
 
         //para buscar clases que promocionan a la que se busca
         binding.bPromoA.setOnClickListener {

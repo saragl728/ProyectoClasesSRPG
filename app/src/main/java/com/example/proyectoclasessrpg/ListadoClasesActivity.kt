@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.adapter.ClaseAdapter
-import com.example.proyectoclasessrpg.database.Clase
 import com.example.proyectoclasessrpg.databinding.ActivityListadoClasesBinding
 import com.example.proyectoclasessrpg.provider.ClaseProvider
 import kotlinx.coroutines.CoroutineScope
@@ -20,19 +19,29 @@ class ListadoClasesActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de clases"
 
-        binding.recycler.layoutManager = LinearLayoutManager(this)
+        binding.recycler.apply {
+            layoutManager = LinearLayoutManager(this@ListadoClasesActivity)
+            CoroutineScope(Dispatchers.IO).launch {
+                adapter = ClaseAdapter(auxDao.getAllClases())
+            }
+            runOnUiThread { true }
+        }
+
+        //binding.recycler.layoutManager = LinearLayoutManager(this)
         var adapter = ClaseAdapter(ClaseProvider.listaClases)
-        binding.recycler.adapter = adapter
+
+        //binding.recycler.adapter = adapter
 
         binding.bBuscar.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
                     //var objetos : List<Clase> = ProyectoSrpg.database.listaCla().getClasesPorNombre(filtro)
-                    var objetos : List<Clase> = auxDao.getClasesPorNombre(filtro)
-                    adapter = ClaseAdapter(objetos)
+                    //var objetos : List<Clase> = auxDao.getClasesPorNombre(filtro)
+                    var objetos = auxDao.getClasesPorNombre(filtro)
+                    binding.recycler.adapter = ClaseAdapter(objetos)
                 }
-                runOnUiThread { true }
+                runOnUiThread { false }
             }
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
@@ -45,5 +54,6 @@ class ListadoClasesActivity : ActividadConMenus() {
             startActivity(Intent(this, NuevaClaseActivity::class.java))
         }
     }
+
 
 }

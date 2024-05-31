@@ -22,11 +22,5 @@ class PropiedadAdapter(private val propiedadList:List<Propiedad>): RecyclerView.
         val item = propiedadList[position]
         holder.render(item)
 
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                ProyectoSrpg.database.listaCla().deletePropiedad(item)
-            }
-            true
-        }
     }
 }

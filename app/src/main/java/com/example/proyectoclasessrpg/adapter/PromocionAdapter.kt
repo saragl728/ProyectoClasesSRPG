@@ -21,13 +21,6 @@ class PromocionAdapter(private val promocionList: List<Promocion>): RecyclerView
         val item = promocionList[position]
         holder.render(item)
 
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-            ProyectoSrpg.database.listaCla().deletePromocion(item)
-            }
-            true
-        }
-
     }
 
     override fun getItemCount(): Int = promocionList.size

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
+import com.example.proyectoclasessrpg.adapter.ClaseAdapter
 import com.example.proyectoclasessrpg.adapter.HabilidadAdapter
 import com.example.proyectoclasessrpg.database.Habilidad
 import com.example.proyectoclasessrpg.databinding.ActivityListadoHabilidadesBinding
@@ -21,10 +22,19 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
 
         title = "Lista de habilidades"
 
-        binding.recycler.layoutManager = LinearLayoutManager(this)
+
+//        binding.recycler.layoutManager = LinearLayoutManager(this)
+//        binding.recycler.adapter = adapter
+
+        binding.recycler.apply {
+            layoutManager = LinearLayoutManager(this@ListadoHabilidadesActivity)
+            CoroutineScope(Dispatchers.IO).launch {
+                adapter = HabilidadAdapter(auxDao.getAllHabilidades())
+            }
+            runOnUiThread { true }
+        }
 
         var adapter = HabilidadAdapter(HabilidadProvider.listaHabilidades)
-        binding.recycler.adapter = adapter
 
 
         binding.bBuscar.setOnClickListener {

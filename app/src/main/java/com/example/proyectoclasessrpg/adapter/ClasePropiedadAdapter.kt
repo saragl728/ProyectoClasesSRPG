@@ -22,12 +22,6 @@ class ClasePropiedadAdapter(private val clasePropiedadList: List<ClasePropiedad>
         val item = clasePropiedadList[position]
         holder.render(item)
 
-        holder.itemView.setOnLongClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                ProyectoSrpg.database.listaCla().deleteClaseConPropiedad(item)
-            }
-            true
-        }
     }
 
 }
