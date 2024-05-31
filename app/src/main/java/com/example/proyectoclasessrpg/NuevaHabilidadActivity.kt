@@ -24,7 +24,6 @@ class NuevaHabilidadActivity : ActividadConMenus() {
                 var descrip = Estatico.FormatSimple(binding.tDescripcion.editText?.text.toString(), "La descripción de la habilidad no puede estar en blanco")
                 var habilidad = Habilidad(nomHabilidad, descrip)
                 CoroutineScope(Dispatchers.IO).launch {
-                    //ProyectoSrpg.database.listaCla().addHabilidad(habilidad)
                     auxDao.addHabilidad(habilidad)
                 }
                 runOnUiThread { true }
@@ -32,7 +31,6 @@ class NuevaHabilidadActivity : ActividadConMenus() {
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
 
 

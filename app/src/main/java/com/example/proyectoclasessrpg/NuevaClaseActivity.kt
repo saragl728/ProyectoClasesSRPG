@@ -31,7 +31,6 @@ class NuevaClaseActivity : ActividadConMenus() {
                 val clase = Clase(nomInterno, nomVisible, descrip, movimiento)
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    //val id = ProyectoSrpg.database.listaCla().addClase(clase)
                     val id = auxDao.addClase(clase)
                 }
                 runOnUiThread { true }
@@ -40,7 +39,6 @@ class NuevaClaseActivity : ActividadConMenus() {
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
 
         binding.bVolver.setOnClickListener {

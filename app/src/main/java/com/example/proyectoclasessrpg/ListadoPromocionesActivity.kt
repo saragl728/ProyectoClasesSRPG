@@ -39,17 +39,13 @@ class ListadoPromocionesActivity : ActividadConMenus() {
         //para buscar clases que promocionan a la que se busca
         binding.bPromoA.setOnClickListener {
             try {
-
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
 
                     CoroutineScope(Dispatchers.IO).launch {
-
-//                        var objetos : List<Promocion> = ProyectoSrpg.database.listaCla().getPromosDeBase(filtro)
-                        var objetos : List<Promocion> = auxDao.getPromosDeBase(filtro)
+                        var objetos = auxDao.getPromosDeBase(filtro)
                         adapter = PromocionAdapter(objetos)
                     }
                     runOnUiThread { true }
-
 
             }
             catch (e: Exception){
@@ -64,8 +60,7 @@ class ListadoPromocionesActivity : ActividadConMenus() {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    //var objetos : List<Promocion> = ProyectoSrpg.database.listaCla().getPromosHaciaPromo(filtro)
-                    var objetos : List<Promocion> = auxDao.getPromosHaciaPromo(filtro)
+                    var objetos = auxDao.getPromosHaciaPromo(filtro)
                     adapter = PromocionAdapter(objetos)
                 }
                 runOnUiThread { true }
@@ -76,7 +71,6 @@ class ListadoPromocionesActivity : ActividadConMenus() {
             }
 
         }
-
 
         binding.bMas.setOnClickListener {
             actividadActual = 3

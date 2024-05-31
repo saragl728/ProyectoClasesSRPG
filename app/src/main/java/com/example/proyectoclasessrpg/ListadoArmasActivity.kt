@@ -37,8 +37,7 @@ class ListadoArmasActivity : ActividadConMenus() {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomArma.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
-                    //var objetos : List<Arma> = ProyectoSrpg.database.listaCla().getArmasConNombre(filtro)
-                    var objetos : List<Arma> = auxDao.getArmasConNombre(filtro)
+                    var objetos = auxDao.getArmasConNombre(filtro)
                     adapter = ArmaAdapter(objetos)
                 }
                 runOnUiThread { true }

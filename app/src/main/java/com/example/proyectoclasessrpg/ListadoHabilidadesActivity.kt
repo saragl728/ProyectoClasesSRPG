@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
-import com.example.proyectoclasessrpg.adapter.ClaseAdapter
 import com.example.proyectoclasessrpg.adapter.HabilidadAdapter
 import com.example.proyectoclasessrpg.database.Habilidad
 import com.example.proyectoclasessrpg.databinding.ActivityListadoHabilidadesBinding
@@ -43,7 +42,7 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
 
                 CoroutineScope(Dispatchers.IO).launch {
                     //var objetos : List<Habilidad> = ProyectoSrpg.database.listaCla().getHabilidadPorNombre(filtro)
-                    var objetos : List<Habilidad> = auxDao.getHabilidadPorNombre(filtro)
+                    var objetos = auxDao.getHabilidadPorNombre(filtro)
                     adapter = HabilidadAdapter(objetos)
                 }
                 runOnUiThread { true }

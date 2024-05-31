@@ -5,7 +5,9 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Upsert
+import com.example.proyectoclasessrpg.ProyectoSrpg
 
 @Dao
 interface Dao {
@@ -20,9 +22,38 @@ interface Dao {
     @Upsert(entity = Clase::class)
     suspend fun addClase(clase: Clase): Long
 
+    @Transaction
+    suspend fun borraClase(clase: Clase){
+        val promosA = getPromosHaciaPromo(clase.nombreInterno)
+        val promosB = getPromosDeBase(clase.nombreInterno)
+        val armasC = getArmaPorClase(clase.nombreInterno)
+        val PropC = getPropiedadPorClase(clase.nombreInterno)
+        val habiliC = getHabilidadPorClase(clase.nombreInterno)
+
+        //procedo al borrado
+        for (i in 0 until promosA.size){
+                    ProyectoSrpg.database.listaCla().deletePromocion(promosA[i])
+        }
+        for (i in 0 until promosB.size){
+            ProyectoSrpg.database.listaCla().deletePromocion(promosB[i])
+        }
+        for (i in 0 until armasC.size){
+            ProyectoSrpg.database.listaCla().deleteClaseConArma(armasC[i])
+        }
+
+        for (i in 0 until PropC.size){
+            ProyectoSrpg.database.listaCla().deleteClaseConPropiedad(PropC[i])
+        }
+
+        for (i in 0 until habiliC.size){
+            ProyectoSrpg.database.listaCla().deleteClaseConHabilidad(habiliC[i])
+        }
+
+        deleteClase(clase)
+    }
+
     @Delete(entity = Clase::class)
     suspend fun deleteClase(clase: Clase) : Int
-
 
     //habilidad
     @Query("SELECT * FROM habilidad")
@@ -33,6 +64,15 @@ interface Dao {
 
     @Upsert(entity = Habilidad::class)
     suspend fun addHabilidad(habilidad: Habilidad): Long
+
+    @Transaction
+    suspend fun borraHabilidad(habilidad: Habilidad){
+        val hab = getClasePorHabilidad(habilidad.nombreHabilidad)
+        for (i in 0 until hab.size){
+            ProyectoSrpg.database.listaCla().deleteClaseConHabilidad(hab[i])
+        }
+        deleteHabilidad(habilidad)
+    }
 
     @Delete(entity = Habilidad::class)
     suspend fun deleteHabilidad(habilidad: Habilidad): Int
@@ -48,6 +88,15 @@ interface Dao {
     @Insert(entity = Propiedad::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun addPropiedad(propiedad: Propiedad): Long
 
+    @Transaction
+    suspend fun borraPropiedad(propiedad: Propiedad){
+        val prop = getClasePorPropiedad(propiedad.nombrePropiedad)
+        for (i in 0 until prop.size){
+            ProyectoSrpg.database.listaCla().deleteClaseConPropiedad(prop[i])
+        }
+        deletePropiedad(propiedad)
+    }
+
     @Delete(entity = Propiedad::class)
     suspend fun deletePropiedad(propiedad: Propiedad): Int
 
@@ -60,6 +109,15 @@ interface Dao {
 
     @Insert(entity = Arma::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun addArma(arma: Arma): Long
+
+    @Transaction
+    suspend fun borraArma(arma: Arma){
+        val arm = getClasePorArma(arma.NombreArma)
+        for (i in 0 until arm.size){
+            ProyectoSrpg.database.listaCla().deleteClaseConArma(arm[i])
+        }
+        deleteArma(arma)
+    }
 
     @Delete(entity = Arma::class)
     suspend fun deleteArma(arma: Arma): Int
@@ -81,8 +139,14 @@ interface Dao {
     suspend fun deletePromocion(promocion: Promocion): Int
 
     //clase+Arma
+    @Query("SELECT * FROM claseUsaArma")
+    suspend fun getClasesConArmas() : MutableList<ClaseArma>
+
     @Query("SELECT * FROM claseUsaArma WHERE nomArma = :arma")
     suspend fun getClasePorArma(arma: String): MutableList<ClaseArma>
+
+    @Query("SELECT * FROM claseUsaArma WHERE nomClase = :clase")
+    suspend fun getArmaPorClase(clase: String): MutableList<ClaseArma>
 
     @Insert(entity = ClaseArma::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun addClaseConArma(claseArma: ClaseArma): Long
@@ -91,8 +155,14 @@ interface Dao {
     suspend fun deleteClaseConArma(claseArma: ClaseArma): Int
 
     //clase + habilidad
+    @Query("SELECT * FROM claseTieneHabilidades")
+    suspend fun getClasesConHabilidades() : MutableList<ClaseHabilidad>
+
     @Query("SELECT * FROM claseTieneHabilidades WHERE Habilidad = :habilidad")
     suspend fun getClasePorHabilidad(habilidad: String): MutableList<ClaseHabilidad>
+
+    @Query("SELECT * FROM claseTieneHabilidades WHERE Clase = :clase")
+    suspend fun getHabilidadPorClase(clase: String): MutableList<ClaseHabilidad>
 
     @Insert(entity = ClaseHabilidad::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun addClaseConHabilidad(claseHabilidad: ClaseHabilidad): Long
@@ -101,8 +171,14 @@ interface Dao {
     suspend fun deleteClaseConHabilidad(claseHabilidad: ClaseHabilidad): Int
 
     //clase + propiedad
+    @Query("SELECT * FROM claseTienePropiedades")
+    suspend fun getClasesConPropiedades() : MutableList<ClasePropiedad>
+
     @Query("SELECT * FROM claseTienePropiedades WHERE Propiedad = :prop")
     suspend fun getClasePorPropiedad(prop: String): MutableList<ClasePropiedad>
+
+    @Query("SELECT * FROM claseTienePropiedades WHERE Clase = :clase")
+    suspend fun getPropiedadPorClase(clase: String): MutableList<ClasePropiedad>
 
     @Insert(entity = ClasePropiedad::class, onConflict = OnConflictStrategy.REPLACE)
     suspend fun addClaseConPropiedad(clasePropiedad: ClasePropiedad): Long

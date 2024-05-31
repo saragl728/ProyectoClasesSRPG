@@ -31,7 +31,6 @@ class ConectarClasesOtrosActivity : ActividadConMenus() {
                         var nomArma = Estatico.FormatSimple(binding.nomArma.editText?.text.toString(), "Hay que introducir el tipo de arma")
                         var claArma = ClaseArma(nomClase, nomArma)
                         CoroutineScope(Dispatchers.IO).launch {
-                            //val id = ProyectoSrpg.database.listaCla().addClaseConArma(claArma)
                             val id = auxDao.addClaseConArma(claArma)
                         }
                         runOnUiThread { true }
@@ -41,7 +40,6 @@ class ConectarClasesOtrosActivity : ActividadConMenus() {
                         var habilidad = Estatico.FormatSimple(binding.nomHabilidad.editText?.text.toString(), "Hay que introducir la habilidad")
                         var claHabi = ClaseHabilidad(nomClase, habilidad)
                         CoroutineScope(Dispatchers.IO).launch {
-                            //val id = ProyectoSrpg.database.listaCla().addClaseConHabilidad(claHabi)
                             val id = auxDao.addClaseConHabilidad(claHabi)
                         }
                         runOnUiThread { true }
@@ -51,7 +49,6 @@ class ConectarClasesOtrosActivity : ActividadConMenus() {
                         var propied = Estatico.FormatSimple(binding.nombrePropiedad.editText?.text.toString(), "Hay que introducir la propiedad")
                         var claProp = ClasePropiedad(nomClase, propied)
                         CoroutineScope(Dispatchers.IO).launch {
-                            //val id = ProyectoSrpg.database.listaCla().addClaseConPropiedad(claProp)
                             val id = auxDao.addClaseConPropiedad(claProp)
                         }
                         runOnUiThread { true }

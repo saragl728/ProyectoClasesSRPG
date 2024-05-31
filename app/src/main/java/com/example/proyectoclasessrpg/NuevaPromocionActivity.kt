@@ -27,7 +27,6 @@ class NuevaPromocionActivity : ActividadConMenus() {
                 var promo = Promocion(claseBase, clasePromo)
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    //ProyectoSrpg.database.listaCla().addPromocion(promo)
                     auxDao.addPromocion(promo)
                 }
                 runOnUiThread { true }
@@ -35,7 +34,6 @@ class NuevaPromocionActivity : ActividadConMenus() {
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
 
         binding.bVolver.setOnClickListener {

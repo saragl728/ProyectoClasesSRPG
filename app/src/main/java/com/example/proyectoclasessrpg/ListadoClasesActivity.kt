@@ -2,6 +2,7 @@ package com.example.proyectoclasessrpg
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.adapter.ClaseAdapter
@@ -23,6 +24,7 @@ class ListadoClasesActivity : ActividadConMenus() {
             layoutManager = LinearLayoutManager(this@ListadoClasesActivity)
             CoroutineScope(Dispatchers.IO).launch {
                 adapter = ClaseAdapter(auxDao.getAllClases())
+
             }
             runOnUiThread { true }
         }
@@ -30,18 +32,21 @@ class ListadoClasesActivity : ActividadConMenus() {
         //binding.recycler.layoutManager = LinearLayoutManager(this)
         var adapter = ClaseAdapter(ClaseProvider.listaClases)
 
-        //binding.recycler.adapter = adapter
 
         binding.bBuscar.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
-                    //var objetos : List<Clase> = ProyectoSrpg.database.listaCla().getClasesPorNombre(filtro)
                     //var objetos : List<Clase> = auxDao.getClasesPorNombre(filtro)
                     var objetos = auxDao.getClasesPorNombre(filtro)
-                    binding.recycler.adapter = ClaseAdapter(objetos)
+                    //binding.recycler.adapter = ClaseAdapter(objetos)
+                    binding.recycler.apply {
+                        adapter = ClaseAdapter(objetos)
+                        Log.d("Búsqueda", "Hay ${objetos.count()} objetos")
+                    }
                 }
-                runOnUiThread { false }
+                runOnUiThread { true }
+
             }
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
@@ -53,7 +58,7 @@ class ListadoClasesActivity : ActividadConMenus() {
             actividadActual = 1
             startActivity(Intent(this, NuevaClaseActivity::class.java))
         }
-    }
 
+    }
 
 }

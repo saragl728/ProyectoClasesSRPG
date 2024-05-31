@@ -21,7 +21,6 @@ class ListadoPropiedadesActivity : ActividadConMenus() {
         title = "Lista de propiedades"
 
 //        binding.recycler.layoutManager = LinearLayoutManager(this)
-//
 //        binding.recycler.adapter = adapter
 
         binding.recycler.apply {
@@ -39,9 +38,7 @@ class ListadoPropiedadesActivity : ActividadConMenus() {
                 var filtro = Estatico.FormatMayus(binding.nomProp.editText?.text.toString(), "Hay que poner algo que buscar")
 
                 CoroutineScope(Dispatchers.IO).launch {
-
-                        //var objetos : List<Propiedad> = ProyectoSrpg.database.listaCla().getPropiedadPorNombre(filtro)
-                    var objetos : List<Propiedad> = auxDao.getPropiedadPorNombre(filtro)
+                    var objetos = auxDao.getPropiedadPorNombre(filtro)
                         adapter = PropiedadAdapter(objetos)
                     }
                     runOnUiThread { true }

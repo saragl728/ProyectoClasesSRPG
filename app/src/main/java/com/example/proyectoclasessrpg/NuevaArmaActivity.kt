@@ -23,7 +23,6 @@ class NuevaArmaActivity : ActividadConMenus() {
                 var arma = Arma(nomArma)
                 //se procede a la insercción en la base de datos
                 CoroutineScope(Dispatchers.IO).launch {
-                    //ProyectoSrpg.database.listaCla().addArma(arma)
                     auxDao.addArma(arma)
                 }
                 runOnUiThread { true }
@@ -31,7 +30,6 @@ class NuevaArmaActivity : ActividadConMenus() {
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
 
         binding.bVolver.setOnClickListener {

@@ -22,7 +22,6 @@ class NuevaPropiedadActivity : ActividadConMenus() {
                 val prop = Estatico.FormatSimple(binding.nomPropiedad.editText?.text.toString(), "El nombre de la propiedad no puede estar en blanco")
                 var proppi = Propiedad(prop)
                 CoroutineScope(Dispatchers.IO).launch {
-                    //ProyectoSrpg.database.listaCla().addPropiedad(proppi)
                     auxDao.addPropiedad(proppi)
                 }
                 runOnUiThread { true }
