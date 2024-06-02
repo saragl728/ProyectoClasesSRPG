@@ -58,7 +58,7 @@ open class ActividadConMenus : AppCompatActivity() {
             else menu.getItem(i).isEnabled = true
         }
 
-        return true;
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -193,22 +193,21 @@ open class ActividadConMenus : AppCompatActivity() {
                 var mensaje = ""
                 //hago que el mensaje que muestre cambie en función de la actividad
                 when (actividadActual) {
-                    0 -> mensaje = "Aquí puedes ver las diferentes clases que hay. También puedes eliminar una clase seleccionándola."
+                    0 -> mensaje = "Aquí puedes ver las diferentes clases que hay. También puedes eliminar una clase haciendo click en el botón de borrar."
                     1 -> mensaje = "Aquí puedes añadir clases. Recuerda que no puedes dejar campos en blanco, los nombres internos de las clases se pondrán en mayúsculas y se eliminarán los espacios en blanco de los elementos que insertes."
-                    2 -> mensaje = "Aquí puedes ver el listado de promociones de las clases. También puedes eliminar una seleccionándola."
+                    2 -> mensaje = "Aquí puedes ver el listado de promociones de las clases. También puedes eliminar una haciendo click en el botón de borrar."
                     3 -> mensaje = "Aquí puedes añadir promociones entre clases. Recuerda que no es posible que la clase base y la clase avanzada tengan el mismo nombre interno."
-                    4 -> mensaje = "Aquí puedes ver las diferentes habilidades que hay. También puedes eliminar una habilidad seleccionándola."
+                    4 -> mensaje = "Aquí puedes ver las diferentes habilidades que hay. También puedes eliminar una habilidad haciendo click en el botón de borrar."
                     5 -> mensaje = "Aquí puedes añadir habilidades. Recuerda que las habilidades se distinguen por su nombre y que no puedes dejar la descripción en blanco."
-                    6 -> mensaje = "Aquí puedes los tipos de armas que las clases pueden usar."
+                    6 -> mensaje = "Aquí puedes los tipos de armas que las clases pueden usar. También puedes eliminar una haciendo click en el botón de borrar."
                     7 -> mensaje = "Aquí puedes añadir nuevos tipos de armas."
-                    8 -> mensaje = "Aquí puedes ver las diferentes propiedades que pueden estar asociadas a las clases."
+                    8 -> mensaje = "Aquí puedes ver las diferentes propiedades que pueden estar asociadas a las clases. También puedes eliminar una haciendo click en el botón de borrar."
                     9 -> mensaje = "Aquí puedes añadir nuevas propiedades."
                     10 -> mensaje = "Aquí puedes conectar clases con otros elementos como habilidades, tipos de armas o propiedades."
-                    11 -> mensaje = "Aquí puedes ver las conexiones entre clases y habilidades/tipos de armas/propiedades."
+                    11 -> mensaje = "Aquí puedes ver las conexiones entre clases y habilidades/tipos de armas/propiedades. Puedes eliminarlas haciendo click en el botón de borrar"
                 }
 
                 //muestra un AlertDialog aclarando cosas sobre la actividad actual
-
                 //hago que suene el popUp
                 sonidoPopUp.start()
 

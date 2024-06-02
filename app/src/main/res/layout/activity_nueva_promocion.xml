@@ -15,8 +15,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nomClasePromo"
-        android:layout_marginHorizontal="5dp">
+        app:layout_constraintBottom_toTopOf="@id/nomClasePromo">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Clase base"
             android:layout_width="match_parent"
@@ -31,8 +30,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nomClaseBase"
-        app:layout_constraintBottom_toTopOf="@id/bAnyadirPromocion"
-        android:layout_marginHorizontal="5dp">
+        app:layout_constraintBottom_toTopOf="@id/bAnyadirPromocion">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Clase promocionada"
             android:layout_width="match_parent"

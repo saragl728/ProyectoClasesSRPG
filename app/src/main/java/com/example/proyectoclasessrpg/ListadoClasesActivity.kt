@@ -2,18 +2,18 @@ package com.example.proyectoclasessrpg
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.adapter.ClaseAdapter
+import com.example.proyectoclasessrpg.database.Clase
 import com.example.proyectoclasessrpg.databinding.ActivityListadoClasesBinding
-import com.example.proyectoclasessrpg.provider.ClaseProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ListadoClasesActivity : ActividadConMenus() {
 
+    lateinit var listaObjetos :List<Clase>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = ActivityListadoClasesBinding.inflate(layoutInflater)
@@ -29,23 +29,19 @@ class ListadoClasesActivity : ActividadConMenus() {
             runOnUiThread { true }
         }
 
-        //binding.recycler.layoutManager = LinearLayoutManager(this)
-        var adapter = ClaseAdapter(ClaseProvider.listaClases)
-
 
         binding.bBuscar.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
-                    //var objetos : List<Clase> = auxDao.getClasesPorNombre(filtro)
-                    var objetos = auxDao.getClasesPorNombre(filtro)
-                    //binding.recycler.adapter = ClaseAdapter(objetos)
+                    listaObjetos = auxDao.getClasesPorNombre(filtro)
+
+                }
+                runOnUiThread { true
                     binding.recycler.apply {
-                        adapter = ClaseAdapter(objetos)
-                        Log.d("Búsqueda", "Hay ${objetos.count()} objetos")
+                        adapter = ClaseAdapter(listaObjetos)
                     }
                 }
-                runOnUiThread { true }
 
             }
             catch (e: Exception){

@@ -1,127 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ConectarClasesOtrosActivity">
-
-    <com.google.android.material.textfield.TextInputLayout
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nomClase"
-        android:layout_margin="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nomArma"
-        android:layout_marginHorizontal="5dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Clase"
+        android:layout_height="match_parent"
+        tools:context=".ConectarClasesOtrosActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/nomClase"
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/nomArma">
+            <com.google.android.material.textfield.TextInputEditText
+                android:hint="Clase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nomHabilidad"
-        android:layout_margin="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nomArma"
-        app:layout_constraintBottom_toTopOf="@id/nombrePropiedad"
-        android:layout_marginHorizontal="5dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Habilidad"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/nomHabilidad"
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nomArma"
+            app:layout_constraintBottom_toTopOf="@id/nombrePropiedad">
+            <com.google.android.material.textfield.TextInputEditText
+                android:hint="Habilidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nomArma"
-        android:layout_margin="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nomClase"
-        app:layout_constraintBottom_toTopOf="@id/nomHabilidad"
-        android:layout_marginHorizontal="5dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Tipo de arma"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/nomArma"
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nomClase"
+            app:layout_constraintBottom_toTopOf="@id/nomHabilidad">
+            <com.google.android.material.textfield.TextInputEditText
+                android:hint="Tipo de arma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nombrePropiedad"
-        android:layout_margin="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nomHabilidad"
-        app:layout_constraintBottom_toTopOf="@id/divisor"
-        android:layout_marginHorizontal="5dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:hint="Propiedad"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/nombrePropiedad"
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nomHabilidad"
+            app:layout_constraintBottom_toTopOf="@id/divisor">
+            <com.google.android.material.textfield.TextInputEditText
+                android:hint="Propiedad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/bAnyadir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Añadir"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/bVolver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioBotones"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bVolver"
-        android:text="Volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/bAnyadir"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioBotones"/>
-
-    <RadioGroup
-        android:id="@+id/radioBotones"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bAnyadir"
-        app:layout_constraintTop_toBottomOf="@id/divisor">
-        <RadioButton
+        <Button
+            android:id="@+id/bAnyadir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioArma"
-            android:text="Tipo de Arma"/>
-        <RadioButton
+            android:text="Añadir"
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/bVolver"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioBotones"/>
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioPropiedad"
-            android:text="Propiedad"/>
-        <RadioButton
+            android:id="@+id/bVolver"
+            android:layout_margin="5dp"
+            android:text="Volver"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/bAnyadir"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioBotones"/>
+
+        <RadioGroup
+            android:id="@+id/radioBotones"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radioHabilidad"
-            android:text="Habilidad"/>
-    </RadioGroup>
-
-    <View
-        android:id="@+id/divisor"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@id/radioBotones"
-        app:layout_constraintTop_toBottomOf="@id/nombrePropiedad"/>
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bAnyadir"
+            app:layout_constraintTop_toBottomOf="@id/divisor">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioArma"
+                android:text="Tipo de Arma"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioPropiedad"
+                android:text="Propiedad"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioHabilidad"
+                android:text="Habilidad"/>
+        </RadioGroup>
+        <View
+            android:id="@+id/divisor"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toTopOf="@id/radioBotones"
+            app:layout_constraintTop_toBottomOf="@id/nombrePropiedad"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

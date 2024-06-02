@@ -39,7 +39,6 @@ class ContOlvidadaActivity : ActividadesUsuarios() {
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
     }
 }

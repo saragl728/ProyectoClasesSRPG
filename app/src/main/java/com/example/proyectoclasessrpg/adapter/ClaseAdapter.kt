@@ -20,8 +20,4 @@ class ClaseAdapter(private val claseList:List<Clase>): RecyclerView.Adapter<Clas
 
     override fun getItemCount(): Int = claseList.size
 
-    fun QuitaClase(clase: Clase){
-
-        notifyDataSetChanged()
-    }
 }

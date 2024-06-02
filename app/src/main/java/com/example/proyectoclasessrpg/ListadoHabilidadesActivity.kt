@@ -7,13 +7,13 @@ import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.adapter.HabilidadAdapter
 import com.example.proyectoclasessrpg.database.Habilidad
 import com.example.proyectoclasessrpg.databinding.ActivityListadoHabilidadesBinding
-import com.example.proyectoclasessrpg.provider.HabilidadProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ListadoHabilidadesActivity : ActividadConMenus() {
 
+    lateinit var listaObjetos :List<Habilidad>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = ActivityListadoHabilidadesBinding.inflate(layoutInflater)
@@ -21,9 +21,6 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
 
         title = "Lista de habilidades"
 
-
-//        binding.recycler.layoutManager = LinearLayoutManager(this)
-//        binding.recycler.adapter = adapter
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@ListadoHabilidadesActivity)
@@ -33,19 +30,19 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
             runOnUiThread { true }
         }
 
-        var adapter = HabilidadAdapter(HabilidadProvider.listaHabilidades)
-
-
         binding.bBuscar.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomHabilidad.editText?.text.toString(), "Hay que poner algo que buscar")
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    //var objetos : List<Habilidad> = ProyectoSrpg.database.listaCla().getHabilidadPorNombre(filtro)
-                    var objetos = auxDao.getHabilidadPorNombre(filtro)
-                    adapter = HabilidadAdapter(objetos)
+                    listaObjetos = auxDao.getHabilidadPorNombre(filtro)
+
                 }
-                runOnUiThread { true }
+                runOnUiThread {
+                    binding.recycler.apply {
+                        adapter = HabilidadAdapter(listaObjetos)
+                    }
+                }
 
             }
             catch (e: Exception){

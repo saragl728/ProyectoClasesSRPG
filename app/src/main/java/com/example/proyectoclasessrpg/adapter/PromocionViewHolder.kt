@@ -22,7 +22,6 @@ class PromocionViewHolder(view: View): RecyclerView.ViewHolder(view) {
             }
 
         }
-
     }
 
 }

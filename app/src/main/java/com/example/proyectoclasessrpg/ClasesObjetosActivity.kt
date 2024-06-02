@@ -17,10 +17,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ClasesObjetosActivity : ActividadConMenus() {
+    lateinit var armaClase : List<ClaseArma>
+    lateinit var habiClase : List<ClaseHabilidad>
+    lateinit var propClase : List<ClasePropiedad>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = ActivityClasesObjetosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        title = "Clases con otros objetos"
         binding.recyclerArma.layoutManager = LinearLayoutManager(this)
         binding.recyclerHab.layoutManager = LinearLayoutManager(this)
         binding.recyclerProp.layoutManager = LinearLayoutManager(this)
@@ -61,9 +65,9 @@ class ClasesObjetosActivity : ActividadConMenus() {
                     binding.recyclerArma.visibility = View.INVISIBLE
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        var objetos : List<ClasePropiedad> = auxDao.getClasePorPropiedad(filtro)
+                        propClase = auxDao.getClasePorPropiedad(filtro)
                        //var adapter = ClasePropiedadAdapter(objetos)
-                        binding.recyclerProp.adapter = ClasePropiedadAdapter(objetos)
+                        binding.recyclerProp.adapter = ClasePropiedadAdapter(propClase)
 
 
                 }
@@ -75,8 +79,9 @@ class ClasesObjetosActivity : ActividadConMenus() {
                     binding.recyclerHab.visibility = View.INVISIBLE
                     binding.recyclerProp.visibility = View.INVISIBLE
                     CoroutineScope(Dispatchers.IO).launch {
-                        var objetos : List<ClaseArma> = auxDao.getClasePorArma(filtro)
-                        binding.recyclerArma.adapter = ClaseArmaAdapter(objetos)
+                        //var objetos : List<ClaseArma> = auxDao.getClasePorArma(filtro)
+                        armaClase = auxDao.getClasePorArma(filtro)
+                        binding.recyclerArma.adapter = ClaseArmaAdapter(armaClase)
                     }
                     runOnUiThread { true }
 
@@ -87,8 +92,9 @@ class ClasesObjetosActivity : ActividadConMenus() {
                     binding.recyclerProp.visibility = View.INVISIBLE
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        var objetos : List<ClaseHabilidad> = auxDao.getClasePorHabilidad(filtro)
-                        binding.recyclerHab.adapter = ClaseHabilidadAdapter(objetos)
+                        //var objetos : List<ClaseHabilidad> = auxDao.getClasePorHabilidad(filtro)
+                        habiClase = auxDao.getClasePorHabilidad(filtro)
+                        binding.recyclerHab.adapter = ClaseHabilidadAdapter(habiClase)
                     }
                     runOnUiThread { true }
 

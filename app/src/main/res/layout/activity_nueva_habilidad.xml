@@ -33,8 +33,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tDescripcion"
-        android:layout_marginHorizontal="5dp">
+        app:layout_constraintBottom_toTopOf="@id/tDescripcion">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Habilidad"
             android:layout_width="match_parent"
@@ -49,14 +48,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nomHabilidad"
-        app:layout_constraintBottom_toTopOf="@id/bVolver"
-        android:layout_marginHorizontal="5dp">
+        app:layout_constraintBottom_toTopOf="@id/bVolver">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Descripción"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

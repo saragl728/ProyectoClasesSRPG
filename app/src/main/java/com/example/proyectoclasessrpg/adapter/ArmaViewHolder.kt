@@ -18,8 +18,8 @@ class ArmaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.bEliminar.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 ProyectoSrpg.database.listaCla().borraArma(Arma(armaModel.NombreArma))
-
             }
+
         }
     }
 }

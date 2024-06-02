@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 
 class ListadoPromocionesActivity : ActividadConMenus() {
 
+    lateinit var listaObjetos : List<Promocion>
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +23,6 @@ class ListadoPromocionesActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de promociones"
 
-//        binding.recycler.layoutManager = LinearLayoutManager(this)
-//
-//        binding.recycler.adapter = adapter
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@ListadoPromocionesActivity)
@@ -42,10 +40,13 @@ class ListadoPromocionesActivity : ActividadConMenus() {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
 
                     CoroutineScope(Dispatchers.IO).launch {
-                        var objetos = auxDao.getPromosDeBase(filtro)
-                        adapter = PromocionAdapter(objetos)
+                        listaObjetos = auxDao.getPromosDeBase(filtro)
                     }
-                    runOnUiThread { true }
+                    runOnUiThread {
+                        binding.recycler.apply {
+                            adapter = PromocionAdapter(listaObjetos)
+                        }
+                    }
 
             }
             catch (e: Exception){
@@ -60,16 +61,18 @@ class ListadoPromocionesActivity : ActividadConMenus() {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    var objetos = auxDao.getPromosHaciaPromo(filtro)
-                    adapter = PromocionAdapter(objetos)
+                    listaObjetos = auxDao.getPromosHaciaPromo(filtro)
                 }
-                runOnUiThread { true }
+                runOnUiThread {
+                    binding.recycler.apply {
+                        adapter = PromocionAdapter(listaObjetos)
+                    }
+                }
 
             }
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
 
         binding.bMas.setOnClickListener {

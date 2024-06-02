@@ -13,15 +13,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ListadoArmasActivity : ActividadConMenus() {
+    lateinit var listaObjetos :List<Arma>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var binding = ActivityListadoArmasBinding.inflate(layoutInflater)
         setContentView(binding.root)
         title = "Lista de tipos de armas"
 
-//        binding.recycler.layoutManager = LinearLayoutManager(this)
-//        var adapter = ArmaAdapter(ArmaProvider.listaArma)
-//        binding.recycler.adapter = adapter
 
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@ListadoArmasActivity)
@@ -37,10 +35,14 @@ class ListadoArmasActivity : ActividadConMenus() {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomArma.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
-                    var objetos = auxDao.getArmasConNombre(filtro)
-                    adapter = ArmaAdapter(objetos)
+                    listaObjetos = auxDao.getArmasConNombre(filtro)
+
                 }
-                runOnUiThread { true }
+                runOnUiThread { true
+                    binding.recycler.apply {
+                        adapter = ArmaAdapter(listaObjetos)
+                    }
+                }
             }
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)

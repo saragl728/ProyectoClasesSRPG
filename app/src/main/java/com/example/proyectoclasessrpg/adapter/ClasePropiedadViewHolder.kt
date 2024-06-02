@@ -18,20 +18,10 @@ class ClasePropiedadViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         binding.nombreClase.text = clasePropiedadModel.Clase
         binding.nombrePropiedad.text = clasePropiedadModel.Propiedad
 
-        itemView.setOnLongClickListener {
-            var aviso = AlertDialog.Builder(itemView.context)
-            aviso.setTitle("Aviso")
-            aviso.setIcon(R.drawable.warning)
-            aviso.setMessage("¿Seguro que quieres eliminar este elemento?")
-
-                .setPositiveButton(android.R.string.ok, { dialog, which ->
-                    CoroutineScope(Dispatchers.IO).launch {
-                        ProyectoSrpg.database.listaCla().deleteClaseConPropiedad(ClasePropiedad(clasePropiedadModel.Clase, clasePropiedadModel.Propiedad))
-                    }
-
-                })
-
-            true
+        binding.bEliminar.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                ProyectoSrpg.database.listaCla().deleteClaseConPropiedad(ClasePropiedad(clasePropiedadModel.Clase, clasePropiedadModel.Propiedad))
+            }
         }
     }
 }

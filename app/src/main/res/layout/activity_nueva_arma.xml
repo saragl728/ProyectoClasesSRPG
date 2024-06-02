@@ -14,15 +14,12 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bVolver"
-        android:layout_marginHorizontal="5dp">
+        app:layout_constraintBottom_toTopOf="@id/bVolver">
         <com.google.android.material.textfield.TextInputEditText
             android:hint="Tipo de arma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-
     <Button
         android:id="@+id/bAnyadirArma"
         android:layout_marginBottom="40dp"
