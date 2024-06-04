@@ -72,7 +72,7 @@
             android:id="@+id/textoAviso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#D00000"
+            android:textColor="@color/colorAviso"
             android:textAlignment="center"
             android:layout_margin="5dp"
             android:text="Introduce una contraseña que puedas recordar fácilmente"

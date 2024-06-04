@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.adapter.PromocionAdapter
 import com.example.proyectoclasessrpg.database.Promocion
 import com.example.proyectoclasessrpg.databinding.ActivityListadoPromocionesBinding
-import com.example.proyectoclasessrpg.provider.PromocionProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +23,6 @@ class ListadoPromocionesActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de promociones"
 
-
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@ListadoPromocionesActivity)
             CoroutineScope(Dispatchers.IO).launch {
@@ -32,31 +31,25 @@ class ListadoPromocionesActivity : ActividadConMenus() {
             runOnUiThread { true }
         }
 
-        var adapter = PromocionAdapter(PromocionProvider.listaPromociones)
-
         //para buscar clases que promocionan a la que se busca
-        binding.bPromoA.setOnClickListener {
+        binding.bPromoDe.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
 
-                    CoroutineScope(Dispatchers.IO).launch {
-                        listaObjetos = auxDao.getPromosDeBase(filtro)
-                    }
-                    runOnUiThread {
-                        binding.recycler.apply {
-                            adapter = PromocionAdapter(listaObjetos)
-                        }
-                    }
-
+                CoroutineScope(Dispatchers.IO).launch {
+                    listaObjetos = auxDao.getPromosDeBase(filtro)
+                }
+                runOnUiThread {
+                    muestraResultados(binding.recycler, listaObjetos)
+                }
             }
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
-
         }
 
         //para buscar clases que promocionan de la que se busca
-        binding.bPromoDe.setOnClickListener {
+        binding.bPromoA.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
 
@@ -64,9 +57,7 @@ class ListadoPromocionesActivity : ActividadConMenus() {
                     listaObjetos = auxDao.getPromosHaciaPromo(filtro)
                 }
                 runOnUiThread {
-                    binding.recycler.apply {
-                        adapter = PromocionAdapter(listaObjetos)
-                    }
+                    muestraResultados(binding.recycler, listaObjetos)
                 }
 
             }
@@ -80,4 +71,11 @@ class ListadoPromocionesActivity : ActividadConMenus() {
             startActivity(Intent(this, NuevaPromocionActivity::class.java))
         }
     }
+
+    fun muestraResultados(reciclador: RecyclerView, resultados: List<Promocion>){
+        reciclador.apply {
+            adapter = PromocionAdapter(resultados)
+        }
+    }
+
 }

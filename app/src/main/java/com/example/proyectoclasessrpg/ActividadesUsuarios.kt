@@ -21,4 +21,5 @@ open class ActividadesUsuarios: AppCompatActivity() {
         val intent = Intent(this, ListadoClasesActivity::class.java)
         startActivity(intent)
     }
+
 }

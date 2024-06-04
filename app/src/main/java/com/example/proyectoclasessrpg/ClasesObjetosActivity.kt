@@ -59,45 +59,49 @@ class ClasesObjetosActivity : ActividadConMenus() {
                 //comprobación del filtro
                 var filtro = Estatico.FormatSimple(binding.tFiltro.editText?.text.toString(), "Hay que introducir algo que buscar")
 
-                if (binding.radioPropiedad.isChecked){
-                    binding.recyclerProp.visibility = View.VISIBLE
-                    binding.recyclerHab.visibility = View.INVISIBLE
-                    binding.recyclerArma.visibility = View.INVISIBLE
+                //comprueba qué opción está seleccionada y pondrá visible uno de los recycler views
+                when {
+                    binding.radioPropiedad.isChecked -> {
+                        binding.recyclerProp.visibility = View.VISIBLE
+                        binding.recyclerHab.visibility = View.INVISIBLE
+                        binding.recyclerArma.visibility = View.INVISIBLE
 
-                    CoroutineScope(Dispatchers.IO).launch {
-                        propClase = auxDao.getClasePorPropiedad(filtro)
-                       //var adapter = ClasePropiedadAdapter(objetos)
-                        binding.recyclerProp.adapter = ClasePropiedadAdapter(propClase)
-
-
-                }
-                runOnUiThread { true }
-
-                }
-                if (binding.radioArma.isChecked){
-                    binding.recyclerArma.visibility = View.VISIBLE
-                    binding.recyclerHab.visibility = View.INVISIBLE
-                    binding.recyclerProp.visibility = View.INVISIBLE
-                    CoroutineScope(Dispatchers.IO).launch {
-                        //var objetos : List<ClaseArma> = auxDao.getClasePorArma(filtro)
-                        armaClase = auxDao.getClasePorArma(filtro)
-                        binding.recyclerArma.adapter = ClaseArmaAdapter(armaClase)
+                        CoroutineScope(Dispatchers.IO).launch {
+                            propClase = auxDao.getClasePorPropiedad(filtro)
+                        }
+                        runOnUiThread {
+                            binding.recyclerProp.apply {
+                                adapter = ClasePropiedadAdapter(propClase)
+                            }
+                        }
                     }
-                    runOnUiThread { true }
-
-                }
-                if (binding.radioHabilidad.isChecked){
-                    binding.recyclerHab.visibility = View.VISIBLE
-                    binding.recyclerArma.visibility = View.INVISIBLE
-                    binding.recyclerProp.visibility = View.INVISIBLE
-
-                    CoroutineScope(Dispatchers.IO).launch {
-                        //var objetos : List<ClaseHabilidad> = auxDao.getClasePorHabilidad(filtro)
-                        habiClase = auxDao.getClasePorHabilidad(filtro)
-                        binding.recyclerHab.adapter = ClaseHabilidadAdapter(habiClase)
+                    binding.radioArma.isChecked -> {
+                        binding.recyclerArma.visibility = View.VISIBLE
+                        binding.recyclerHab.visibility = View.INVISIBLE
+                        binding.recyclerProp.visibility = View.INVISIBLE
+                        CoroutineScope(Dispatchers.IO).launch {
+                            armaClase = auxDao.getClasePorArma(filtro)
+                        }
+                        runOnUiThread {
+                            binding.recyclerArma.apply {
+                                adapter = ClaseArmaAdapter(armaClase)
+                            }
+                        }
                     }
-                    runOnUiThread { true }
+                    binding.radioHabilidad.isChecked -> {
+                        binding.recyclerHab.visibility = View.VISIBLE
+                        binding.recyclerArma.visibility = View.INVISIBLE
+                        binding.recyclerProp.visibility = View.INVISIBLE
 
+                        CoroutineScope(Dispatchers.IO).launch {
+                            habiClase = auxDao.getClasePorHabilidad(filtro)
+                        }
+                        runOnUiThread {
+                            binding.recyclerHab.apply {
+                                adapter = ClaseHabilidadAdapter(habiClase)
+                            }
+                        }
+                    }
                 }
 
             }
@@ -105,7 +109,6 @@ class ClasesObjetosActivity : ActividadConMenus() {
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)
             }
         }
-
 
         binding.bMas.setOnClickListener {
             actividadActual = 10

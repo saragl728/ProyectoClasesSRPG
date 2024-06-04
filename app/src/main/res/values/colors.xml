@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name = "colorFondo">#193069</color>
     <color name="fondoCard">#FFEEAA</color>
+    <color name="colorAviso">#D00000</color>
 </resources>

@@ -23,8 +23,6 @@ class RegistroActivity : ActividadesUsuarios() {
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(correo, contrase).addOnCompleteListener {
                     if (it.isSuccessful){
                         FirebaseAuth.getInstance().signInWithEmailAndPassword(correo, contrase)
-//                        val intent = Intent(this, ListadoClasesActivity::class.java)
-//                       startActivity(intent)
                         InicioSesion()
                 }
                     else throw Exception("No se ha podido añadir el usuario")

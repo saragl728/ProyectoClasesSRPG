@@ -19,9 +19,17 @@ class ClaseHabilidadViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.nombreHabilidad.text = claseHabilidadModel.Habilidad
 
         binding.bEliminar.setOnClickListener {
+            var aviso = AlertDialog.Builder(this.itemView.context)
+            aviso.setTitle("Aviso")
+            aviso.setIcon(R.drawable.pregunta)
+            aviso.setMessage("¿Seguro que quieres eliminar este elemento?")
+                .setPositiveButton(android.R.string.ok, { dialog, which ->
             CoroutineScope(Dispatchers.IO).launch {
                 ProyectoSrpg.database.listaCla().deleteClaseConHabilidad(ClaseHabilidad(claseHabilidadModel.Clase, claseHabilidadModel.Habilidad))
             }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+            aviso.show()
         }
     }
 }

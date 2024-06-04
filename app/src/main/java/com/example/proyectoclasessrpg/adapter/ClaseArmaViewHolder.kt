@@ -19,9 +19,17 @@ class ClaseArmaViewHolder(view: View): RecyclerView.ViewHolder(view) {
         binding.nombreArma.text = claseArmaModel.nomArma
 
         binding.bEliminar.setOnClickListener {
+            var aviso = AlertDialog.Builder(this.itemView.context)
+            aviso.setTitle("Aviso")
+            aviso.setIcon(R.drawable.pregunta)
+            aviso.setMessage("¿Seguro que quieres eliminar este elemento?")
+                .setPositiveButton(android.R.string.ok, { dialog, which ->
             CoroutineScope(Dispatchers.IO).launch {
                 ProyectoSrpg.database.listaCla().deleteClaseConArma(ClaseArma(claseArmaModel.nomClase, claseArmaModel.nomArma))
             }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+            aviso.show()
         }
     }
 }
