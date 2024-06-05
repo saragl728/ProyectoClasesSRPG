@@ -7,7 +7,6 @@ import com.example.proyectoclasessrpg.adapter.ActividadConMenus
 import com.example.proyectoclasessrpg.adapter.ArmaAdapter
 import com.example.proyectoclasessrpg.database.Arma
 import com.example.proyectoclasessrpg.databinding.ActivityListadoArmasBinding
-import com.example.proyectoclasessrpg.provider.ArmaProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +19,6 @@ class ListadoArmasActivity : ActividadConMenus() {
         setContentView(binding.root)
         title = "Lista de tipos de armas"
 
-
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@ListadoArmasActivity)
             CoroutineScope(Dispatchers.IO).launch {
@@ -29,16 +27,14 @@ class ListadoArmasActivity : ActividadConMenus() {
             runOnUiThread { true }
         }
 
-        var adapter = ArmaAdapter(ArmaProvider.listaArma)
 
         binding.bBuscar.setOnClickListener {
             try {
                 var filtro = Estatico.FormatMayus(binding.nomArma.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
                     listaObjetos = auxDao.getArmasConNombre(filtro)
-
                 }
-                runOnUiThread { true
+                runOnUiThread {
                     binding.recycler.apply {
                         adapter = ArmaAdapter(listaObjetos)
                     }

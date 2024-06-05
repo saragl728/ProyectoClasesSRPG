@@ -33,7 +33,6 @@ class NuevaHabilidadActivity : ActividadConMenus() {
             }
         }
 
-
         binding.bVolver.setOnClickListener {
             var aviso = AlertDialog.Builder(this)
 

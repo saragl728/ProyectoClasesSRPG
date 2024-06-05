@@ -21,7 +21,6 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
 
         title = "Lista de habilidades"
 
-
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(this@ListadoHabilidadesActivity)
             CoroutineScope(Dispatchers.IO).launch {
@@ -36,14 +35,12 @@ class ListadoHabilidadesActivity : ActividadConMenus() {
 
                 CoroutineScope(Dispatchers.IO).launch {
                     listaObjetos = auxDao.getHabilidadPorNombre(filtro)
-
                 }
                 runOnUiThread {
                     binding.recycler.apply {
                         adapter = HabilidadAdapter(listaObjetos)
                     }
                 }
-
             }
             catch (e: Exception){
                 Estatico.MensajeConSonido(e.message.toString(), sonidoError, this)

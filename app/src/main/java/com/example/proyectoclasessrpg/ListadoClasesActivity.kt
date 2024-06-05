@@ -24,7 +24,6 @@ class ListadoClasesActivity : ActividadConMenus() {
             layoutManager = LinearLayoutManager(this@ListadoClasesActivity)
             CoroutineScope(Dispatchers.IO).launch {
                 adapter = ClaseAdapter(auxDao.getAllClases())
-
             }
             runOnUiThread { true }
         }
@@ -35,7 +34,6 @@ class ListadoClasesActivity : ActividadConMenus() {
                 var filtro = Estatico.FormatMayus(binding.nomClase.editText?.text.toString(), "Hay que poner algo que buscar")
                 CoroutineScope(Dispatchers.IO).launch {
                     listaObjetos = auxDao.getClasesPorNombre(filtro)
-
                 }
                 runOnUiThread { true
                     binding.recycler.apply {

@@ -24,9 +24,6 @@ class MainActivity : ActividadesUsuarios() {
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(usuario, contrase).addOnCompleteListener {
                     if (it.isSuccessful){
                         //te lleva a otra actividad y suena el sonido de inicio
-//                        sonidoInicio.start()
-//                        val intent = Intent(this, ListadoClasesActivity::class.java)
-//                        startActivity(intent)
                         InicioSesion()
                     }
                     else{
