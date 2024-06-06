@@ -224,4 +224,9 @@ open class ActividadConMenus : AppCompatActivity() {
         }
 
     }
+
+    //método para comprobar si una lista genérica tiene elementos
+    fun <T> ListaTieneObjetos(lista: MutableList<T>, mensajeError: String){
+        if (lista.count() < 1) throw Exception(mensajeError)
+    }
     }

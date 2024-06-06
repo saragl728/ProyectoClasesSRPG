@@ -9,7 +9,7 @@ class Estatico {
         //Método que muestra una tostada y hacer sonar un efecto de sonido
         fun MensajeConSonido(tostada: String, sonido : MediaPlayer, contexto: Context){
             sonido.start()
-            Toast.makeText(contexto, tostada, Toast.LENGTH_LONG).show()
+            Toast.makeText(contexto, tostada, Toast.LENGTH_SHORT).show()
         }
 
         //devuelve una cadena recortada sin espacios en mayúsculas

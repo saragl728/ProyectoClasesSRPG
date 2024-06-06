@@ -17,7 +17,10 @@ interface Dao {
     suspend fun getAllClases(): MutableList<Clase>
 
     @Query("SELECT * FROM clase WHERE nombreInterno LIKE '%' || :clase || '%'")
-    suspend fun getClasesPorNombre(clase: String): MutableList<Clase>
+    suspend fun getClasesPorNombre(clase: String): List<Clase>
+
+    @Query("SELECT * FROM clase WHERE nombreInterno LIKE :clase")
+    suspend fun getClaseEspecifica(clase: String): MutableList<Clase>
 
     @Upsert(entity = Clase::class)
     suspend fun addClase(clase: Clase): Long
@@ -62,6 +65,9 @@ interface Dao {
     @Query("SELECT * FROM habilidad WHERE nombreHabilidad LIKE '%' || :habilidad || '%'")
     suspend fun getHabilidadPorNombre(habilidad: String): MutableList<Habilidad>
 
+    @Query("SELECT * FROM habilidad WHERE nombreHabilidad LIKE :habil")
+    suspend fun getHabilidadEspecifica(habil: String): MutableList<Habilidad>
+
     @Upsert(entity = Habilidad::class)
     suspend fun addHabilidad(habilidad: Habilidad): Long
 
@@ -85,6 +91,9 @@ interface Dao {
     @Query("SELECT * FROM propiedad WHERE nombrePropiedad LIKE '%' || :propiedad || '%'")
     suspend fun getPropiedadPorNombre(propiedad: String): MutableList<Propiedad>
 
+    @Query("SELECT * FROM propiedad WHERE nombrePropiedad LIKE :prop")
+    suspend fun getPropiedadEspecifica(prop: String): MutableList<Propiedad>
+
     @Insert(entity = Propiedad::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addPropiedad(propiedad: Propiedad): Long
 
@@ -106,6 +115,9 @@ interface Dao {
 
     @Query("SELECT * FROM arma WHERE NombreArma LIKE '%' || :nom || '%'")
     suspend fun getArmasConNombre(nom: String): MutableList<Arma>
+
+    @Query("SELECT * FROM arma WHERE NombreArma LIKE :arma")
+    suspend fun getArmaEspecifica(arma: String): MutableList<Arma>
 
     @Insert(entity = Arma::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addArma(arma: Arma): Long
