@@ -62,7 +62,7 @@ class ConectarClasesOtrosActivity : ActividadConMenus() {
                         CoroutineScope(Dispatchers.IO).launch {
                             auxHabil = auxDao.getHabilidadEspecifica(habilidad)
                         }
-                        ListaTieneObjetos(auxArma, "No se puede introducir este dato porque la habilidad $habilidad no existe")
+                        ListaTieneObjetos(auxHabil, "No se puede introducir este dato porque la habilidad $habilidad no existe")
                         CoroutineScope(Dispatchers.IO).launch {
                             val id = auxDao.addClaseConHabilidad(claHabi)
                         }
@@ -75,7 +75,7 @@ class ConectarClasesOtrosActivity : ActividadConMenus() {
                         CoroutineScope(Dispatchers.IO).launch {
                             auxProp = auxDao.getPropiedadEspecifica(propied)
                         }
-                        ListaTieneObjetos(auxArma, "No se puede introducir este dato porque la propiedad $propied no existe")
+                        ListaTieneObjetos(auxProp, "No se puede introducir este dato porque la propiedad $propied no existe")
                         CoroutineScope(Dispatchers.IO).launch {
                             val id = auxDao.addClaseConPropiedad(claProp)
                         }
