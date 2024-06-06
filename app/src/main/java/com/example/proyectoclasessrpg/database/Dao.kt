@@ -85,7 +85,7 @@ interface Dao {
     @Query("SELECT * FROM propiedad WHERE nombrePropiedad LIKE '%' || :propiedad || '%'")
     suspend fun getPropiedadPorNombre(propiedad: String): MutableList<Propiedad>
 
-    @Insert(entity = Propiedad::class, onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = Propiedad::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addPropiedad(propiedad: Propiedad): Long
 
     @Transaction
@@ -107,7 +107,7 @@ interface Dao {
     @Query("SELECT * FROM arma WHERE NombreArma LIKE '%' || :nom || '%'")
     suspend fun getArmasConNombre(nom: String): MutableList<Arma>
 
-    @Insert(entity = Arma::class, onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = Arma::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addArma(arma: Arma): Long
 
     @Transaction
@@ -132,7 +132,7 @@ interface Dao {
     @Query("SELECT * FROM promocion WHERE clasePromocionada = :claPromo")
     suspend fun getPromosHaciaPromo(claPromo: String): MutableList<Promocion>
 
-    @Insert(entity = Promocion::class, onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = Promocion::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addPromocion(promocion: Promocion): Long
 
     @Delete(entity = Promocion::class)
@@ -148,7 +148,7 @@ interface Dao {
     @Query("SELECT * FROM claseUsaArma WHERE nomClase = :clase")
     suspend fun getArmaPorClase(clase: String): MutableList<ClaseArma>
 
-    @Insert(entity = ClaseArma::class, onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = ClaseArma::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addClaseConArma(claseArma: ClaseArma): Long
 
     @Delete(entity = ClaseArma::class)
@@ -164,7 +164,7 @@ interface Dao {
     @Query("SELECT * FROM claseTieneHabilidades WHERE Clase = :clase")
     suspend fun getHabilidadPorClase(clase: String): MutableList<ClaseHabilidad>
 
-    @Insert(entity = ClaseHabilidad::class, onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = ClaseHabilidad::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addClaseConHabilidad(claseHabilidad: ClaseHabilidad): Long
 
     @Delete(entity = ClaseHabilidad::class)
@@ -180,7 +180,7 @@ interface Dao {
     @Query("SELECT * FROM claseTienePropiedades WHERE Clase = :clase")
     suspend fun getPropiedadPorClase(clase: String): MutableList<ClasePropiedad>
 
-    @Insert(entity = ClasePropiedad::class, onConflict = OnConflictStrategy.REPLACE)
+    @Insert(entity = ClasePropiedad::class, onConflict = OnConflictStrategy.IGNORE)
     suspend fun addClaseConPropiedad(clasePropiedad: ClasePropiedad): Long
 
     @Delete(entity = ClasePropiedad::class)
